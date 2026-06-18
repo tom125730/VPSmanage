@@ -1,20 +1,67 @@
 # VPSmanage
 
-VPSmanage is a new, independent project repository.
+VPSmanage is an interactive VPS management script collection.
 
-## Status
+It is designed for fresh or existing Linux VPS servers where each action should be optional and confirmed before it changes the system.
 
-This repository is intentionally language-neutral for now. Add the application stack, architecture, and setup commands here once the technology choice is decided.
+## Features
+
+- Detect Linux distribution, version, architecture, package manager, and service manager.
+- Set the SSH port safely with config backup and `sshd -t` validation.
+- Install or run Speedtest tools.
+- Install Docker using Docker's official auto-detect installer.
+- Request SSL certificates with `acme.sh`.
+- Apply optional security measures such as package upgrades, fail2ban, firewall baseline, SSH password login hardening, root SSH login hardening, and automatic security updates.
+- Run basic IP information checks or optional third-party IP quality scripts.
+
+## Quick Start
+
+Run from a VPS shell:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/tom125730/VPSmanage/main/vpsmanage.sh -o vpsmanage.sh
+sudo bash vpsmanage.sh
+```
+
+Or run directly:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/tom125730/VPSmanage/main/vpsmanage.sh | sudo bash
+```
+
+Or run a single command:
+
+```bash
+sudo bash vpsmanage.sh detect
+sudo bash vpsmanage.sh ssh-port
+sudo bash vpsmanage.sh speedtest
+sudo bash vpsmanage.sh docker
+sudo bash vpsmanage.sh ssl
+sudo bash vpsmanage.sh security
+sudo bash vpsmanage.sh ip-quality
+```
+
+## Supported Systems
+
+The script currently targets common Linux VPS distributions:
+
+- Debian and Ubuntu with `apt`
+- RHEL-like systems, AlmaLinux, Rocky Linux, CentOS, and Fedora with `dnf` or `yum`
+- Alpine Linux with `apk` for basic package operations
+
+Some features depend on system services such as `systemd`, `ufw`, `firewalld`, `sshd`, Docker, or external ACME/network APIs.
+
+## Safety Notes
+
+- Keep your current SSH session open after changing the SSH port.
+- Make sure the provider firewall/security group allows the new SSH port.
+- Confirm SSH key login before disabling SSH password authentication.
+- Confirm a sudo-capable non-root account before disabling root SSH login.
+- Third-party test scripts are downloaded only after interactive confirmation.
 
 ## Project Structure
 
 ```text
-docs/   Project notes and design documents
-src/    Application source code
+vpsmanage.sh     Main interactive VPS management script
+docs/            Project notes and design documents
 ```
-
-## Next Steps
-
-1. Choose the stack and runtime.
-2. Define the first feature scope.
-3. Add development, test, and deployment commands.
