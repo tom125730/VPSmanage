@@ -4,6 +4,10 @@ VPSmanage is an interactive VPS management script collection.
 
 It is designed for fresh or existing Linux VPS servers where each action should be optional and confirmed before it changes the system.
 
+VPSmanage supports Chinese and English interaction. It auto-detects the system locale, and you can also switch language in the main menu.
+
+VPSmanage 支持中文和英文交互。脚本会自动识别系统语言，也可以在主菜单中手动切换语言。
+
 ## Features
 
 - Detect Linux distribution, version, architecture, package manager, and service manager.
@@ -29,6 +33,18 @@ Or run directly:
 curl -fsSL https://raw.githubusercontent.com/tom125730/VPSmanage/main/vpsmanage.sh | sudo bash
 ```
 
+Force Chinese:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/tom125730/VPSmanage/main/vpsmanage.sh | sudo VPSMANAGE_LANG=zh bash
+```
+
+Force English:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/tom125730/VPSmanage/main/vpsmanage.sh | sudo VPSMANAGE_LANG=en bash
+```
+
 Or run a single command:
 
 ```bash
@@ -39,6 +55,14 @@ sudo bash vpsmanage.sh docker
 sudo bash vpsmanage.sh ssl
 sudo bash vpsmanage.sh security
 sudo bash vpsmanage.sh ip-quality
+sudo bash vpsmanage.sh language
+```
+
+Chinese examples:
+
+```bash
+sudo VPSMANAGE_LANG=zh bash vpsmanage.sh
+sudo VPSMANAGE_LANG=zh bash vpsmanage.sh security
 ```
 
 ## Supported Systems
